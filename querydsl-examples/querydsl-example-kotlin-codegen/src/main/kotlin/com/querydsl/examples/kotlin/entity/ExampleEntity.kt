@@ -20,10 +20,6 @@ import jakarta.persistence.*
 
 @Entity
 data class ExampleEntity(
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        val id: Int,
-
         @Column
         val name: String,
 
@@ -36,5 +32,5 @@ data class ExampleEntity(
         @Convert(converter = MapConverter::class)
         @Column(columnDefinition = "jsonb")
         val metadata: Map<String, Any> = mutableMapOf(),
-) {
+) : ExampleBaseEntity<Int>() {
 }
